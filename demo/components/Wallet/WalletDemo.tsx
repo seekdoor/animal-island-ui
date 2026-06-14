@@ -80,10 +80,7 @@ const WalletDemo: React.FC = () => {
             <div style={{ ...demoBodyStyle, gap: 32, alignItems: 'center', flexWrap: 'wrap' }}>
                 <Wallet value="∞" />
                 <Wallet value={9999999} thousandSeparator="" />
-                <Wallet
-                    value={88}
-                    icon={<span style={{ fontSize: 40 }}>💰</span>}
-                />
+                <Wallet value={88} icon={<span style={{ fontSize: 40 }}>💰</span>} />
             </div>
 
             <CodeBlock

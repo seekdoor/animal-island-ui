@@ -16,9 +16,7 @@ const PhoneDemo: React.FC = () => (
         <div style={sectionTitleStyle}>
             Phone <span style={tagStyle}>手机</span>
         </div>
-        <div style={labelStyle}>
-            Phone 组件 — 手机界面组件。
-        </div>
+        <div style={labelStyle}>Phone 组件 — 手机界面组件。</div>
         <div style={{ ...demoBodyStyle, transform: 'scale(0.6)', transformOrigin: 'top left', height: 473 }}>
             <Phone />
         </div>
@@ -41,8 +39,6 @@ export default App;`}
     </div>
 );
 
-const PHONE_API: ApiRow[] = [
-    { prop: 'className', desc: '自定义类名', type: 'string', defaultVal: '-' },
-];
+const PHONE_API: ApiRow[] = [{ prop: 'className', desc: '自定义类名', type: 'string', defaultVal: '-' }];
 
 export default PhoneDemo;

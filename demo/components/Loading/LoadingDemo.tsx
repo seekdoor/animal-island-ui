@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { Loading as LoadingComponent, Button } from '../../../src';
-import { CodeBlock, ApiTable, ApiRow, sectionStyle, sectionTitleStyle, tagStyle, demoBodyStyle, labelStyle } from '../../tools';
+import {
+    CodeBlock,
+    ApiTable,
+    ApiRow,
+    sectionStyle,
+    sectionTitleStyle,
+    tagStyle,
+    demoBodyStyle,
+    labelStyle,
+} from '../../tools';
 
 const LoadingDemo: React.FC = () => {
     const [active, setActive] = useState(true);
@@ -11,7 +20,8 @@ const LoadingDemo: React.FC = () => {
                 Loading <span style={tagStyle}>加载动画</span>
             </div>
             <div style={labelStyle}>
-                动森风格小岛 Loading 动画组件，带有漂浮的小岛、摇曳的树叶和游动的鱼。关闭时会从中间圆形透明扩散，露出底层内容。
+                动森风格小岛 Loading
+                动画组件，带有漂浮的小岛、摇曳的树叶和游动的鱼。关闭时会从中间圆形透明扩散，露出底层内容。
             </div>
             <div style={{ marginBottom: 16 }}>
                 <Button type={active ? 'default' : 'primary'} onClick={() => setActive(!active)}>
@@ -23,7 +33,8 @@ const LoadingDemo: React.FC = () => {
                     style={{
                         position: 'absolute',
                         inset: 0,
-                        background: 'linear-gradient(135deg, #ffd6a5 0%, #fdffb6 25%, #caffbf 50%, #9bf6ff 75%, #a0c4ff 100%)',
+                        background:
+                            'linear-gradient(135deg, #ffd6a5 0%, #fdffb6 25%, #caffbf 50%, #9bf6ff 75%, #a0c4ff 100%)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -34,10 +45,7 @@ const LoadingDemo: React.FC = () => {
                 >
                     底层内容 · Underlying Content
                 </div>
-                <LoadingComponent
-                    active={active}
-                    style={{ height: '100%', position: 'absolute', inset: 0 }}
-                />
+                <LoadingComponent active={active} style={{ height: '100%', position: 'absolute', inset: 0 }} />
             </div>
             <CodeBlock
                 code={`import React, { useState } from 'react';

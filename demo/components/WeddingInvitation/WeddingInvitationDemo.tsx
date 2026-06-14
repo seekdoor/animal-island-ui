@@ -1,10 +1,5 @@
 import React, { useRef, useState } from 'react';
-import {
-    WeddingInvitation,
-    WeddingInvitationExportButton,
-    Input,
-    Switch,
-} from '../../../src';
+import { WeddingInvitation, WeddingInvitationExportButton, Input, Switch } from '../../../src';
 import type { WeddingInvitationRef } from '../../../src';
 import {
     CodeBlock,
@@ -39,14 +34,12 @@ const WeddingInvitationDemo: React.FC = () => {
     const [address, setAddress] = useState('动物之森 · 无人岛 · K.K. 演奏台前');
     const [title, setTitle] = useState('Wedding Invitation');
     const [message, setMessage] = useState(
-        '哎呀，恭喜恭喜！我们要在小岛上举办婚礼啦~ 诚挚邀请您一同前来见证这个被花瓣和音符包围的日子！',
+        '哎呀，恭喜恭喜！我们要在小岛上举办婚礼啦~ 诚挚邀请您一同前来见证这个被花瓣和音符包围的日子！'
     );
     const [showLotteryNumber, setShowLotteryNumber] = useState(true);
     const [lotteryNumber, setLotteryNumber] = useState('0001');
     const [lotteryLabel, setLotteryLabel] = useState('LUCKY NUMBER');
-    const [lotteryHint, setLotteryHint] = useState(
-        '凭此号码参与现场抽奖 · Keep this stub for the lucky draw',
-    );
+    const [lotteryHint, setLotteryHint] = useState('凭此号码参与现场抽奖 · Keep this stub for the lucky draw');
 
     const cardRef = useRef<WeddingInvitationRef>(null);
 
@@ -56,7 +49,8 @@ const WeddingInvitationDemo: React.FC = () => {
                 WeddingInvitation <span style={tagStyle}>婚礼请柬</span>
             </div>
             <div style={labelStyle}>
-                动森风格婚礼请柬，定位为「设计 → 导出图片 → 分享 / 打印」。组件本身只渲染卡面，导出按钮通过 ref 在外部触发。
+                动森风格婚礼请柬，定位为「设计 → 导出图片 → 分享 / 打印」。组件本身只渲染卡面，导出按钮通过 ref
+                在外部触发。
             </div>
 
             <div
@@ -109,22 +103,14 @@ const WeddingInvitationDemo: React.FC = () => {
                         gap: 12,
                     }}
                 >
-                    <div style={{ fontSize: 14, fontWeight: 700, color: '#725d42' }}>
-                        编辑请柬
-                    </div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: '#725d42' }}>编辑请柬</div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
                         <Field label="新娘">
-                            <Input
-                                value={brideName}
-                                onChange={(e) => setBrideName(e.target.value)}
-                            />
+                            <Input value={brideName} onChange={(e) => setBrideName(e.target.value)} />
                         </Field>
                         <Field label="新郎">
-                            <Input
-                                value={groomName}
-                                onChange={(e) => setGroomName(e.target.value)}
-                            />
+                            <Input value={groomName} onChange={(e) => setGroomName(e.target.value)} />
                         </Field>
                     </div>
 
@@ -137,10 +123,7 @@ const WeddingInvitationDemo: React.FC = () => {
                             <Input value={date} onChange={(e) => setDate(e.target.value)} />
                         </Field>
                         <Field label="星期">
-                            <Input
-                                value={weekday}
-                                onChange={(e) => setWeekday(e.target.value)}
-                            />
+                            <Input value={weekday} onChange={(e) => setWeekday(e.target.value)} />
                         </Field>
                         <Field label="时间">
                             <Input value={time} onChange={(e) => setTime(e.target.value)} />
@@ -183,36 +166,22 @@ const WeddingInvitationDemo: React.FC = () => {
                             padding: '4px 0',
                         }}
                     >
-                        <span style={{ fontSize: 12, color: '#725d42', fontWeight: 600 }}>
-                            显示抽奖券
-                        </span>
-                        <Switch
-                            checked={showLotteryNumber}
-                            onChange={setShowLotteryNumber}
-                        />
+                        <span style={{ fontSize: 12, color: '#725d42', fontWeight: 600 }}>显示抽奖券</span>
+                        <Switch checked={showLotteryNumber} onChange={setShowLotteryNumber} />
                     </div>
 
                     {showLotteryNumber && (
                         <>
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
                                 <Field label="抽奖号码">
-                                    <Input
-                                        value={lotteryNumber}
-                                        onChange={(e) => setLotteryNumber(e.target.value)}
-                                    />
+                                    <Input value={lotteryNumber} onChange={(e) => setLotteryNumber(e.target.value)} />
                                 </Field>
                                 <Field label="抽奖区标题">
-                                    <Input
-                                        value={lotteryLabel}
-                                        onChange={(e) => setLotteryLabel(e.target.value)}
-                                    />
+                                    <Input value={lotteryLabel} onChange={(e) => setLotteryLabel(e.target.value)} />
                                 </Field>
                             </div>
                             <Field label="抽奖区说明">
-                                <Input
-                                    value={lotteryHint}
-                                    onChange={(e) => setLotteryHint(e.target.value)}
-                                />
+                                <Input value={lotteryHint} onChange={(e) => setLotteryHint(e.target.value)} />
                             </Field>
                         </>
                     )}
@@ -274,7 +243,12 @@ const WEDDING_API: ApiRow[] = [
     { prop: 'venue', desc: '婚礼地点', type: 'string', defaultVal: '彩虹岛 · 樱花广场' },
     { prop: 'address', desc: '详细地址', type: 'string', defaultVal: '-' },
     { prop: 'title', desc: '英文主标题', type: 'ReactNode', defaultVal: 'Wedding Invitation' },
-    { prop: 'subtitle', desc: '中文副标题（默认渲染 wedding.PNG 标题图）', type: 'ReactNode', defaultVal: '<img src={wedding.PNG} />' },
+    {
+        prop: 'subtitle',
+        desc: '中文副标题（默认渲染 wedding.PNG 标题图）',
+        type: 'ReactNode',
+        defaultVal: '<img src={wedding.PNG} />',
+    },
     { prop: 'message', desc: '邀请正文', type: 'ReactNode', defaultVal: '-' },
     { prop: 'showLotteryNumber', desc: '是否显示底部抽奖号码区', type: 'boolean', defaultVal: 'true' },
     { prop: 'lotteryNumber', desc: '抽奖号码', type: 'string', defaultVal: '0001' },
