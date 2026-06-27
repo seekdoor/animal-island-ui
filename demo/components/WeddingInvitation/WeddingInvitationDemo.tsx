@@ -41,6 +41,17 @@ const WeddingInvitationDemo: React.FC = () => {
     const [lotteryNumber, setLotteryNumber] = useState('0001');
     const [lotteryLabel, setLotteryLabel] = useState('LUCKY NUMBER');
     const [lotteryHint, setLotteryHint] = useState('凭此号码参与现场抽奖 · Keep this stub for the lucky draw');
+    const [brideAndGroomImage, setBrideAndGroomImage] = useState<string | undefined>(undefined);
+
+    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => setBrideAndGroomImage(reader.result as string);
+        reader.readAsDataURL(file);
+        // 重置 input.value 以便重复上传同一文件
+        e.target.value = '';
+    };
 
     const cardRef = useRef<WeddingInvitationRef>(null);
 
@@ -89,6 +100,7 @@ const WeddingInvitationDemo: React.FC = () => {
                         lotteryNumber={lotteryNumber}
                         lotteryLabel={lotteryLabel}
                         lotteryHint={lotteryHint}
+                        brideAndGroomImage={brideAndGroomImage}
                     />
                 </div>
 
@@ -105,6 +117,53 @@ const WeddingInvitationDemo: React.FC = () => {
                     }}
                 >
                     <div style={{ fontSize: 14, fontWeight: 700, color: '#725d42' }}>编辑请柬</div>
+
+                    <Field label="新郎新娘合照">
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                            <label
+                                style={{
+                                    flex: 1,
+                                    padding: '6px 10px',
+                                    borderRadius: 8,
+                                    border: '2px solid #e9d6a8',
+                                    background: '#fff',
+                                    fontSize: 12,
+                                    color: brideAndGroomImage ? '#5b4628' : '#a9967a',
+                                    cursor: 'pointer',
+                                    textAlign: 'center',
+                                    whiteSpace: 'nowrap',
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                }}
+                            >
+                                {brideAndGroomImage ? '✓ 已上传自定义图片（点击更换）' : '点击上传图片（默认内置合照）'}
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleImageUpload}
+                                    style={{ display: 'none' }}
+                                />
+                            </label>
+                            {brideAndGroomImage && (
+                                <button
+                                    type="button"
+                                    onClick={() => setBrideAndGroomImage(undefined)}
+                                    style={{
+                                        padding: '6px 10px',
+                                        borderRadius: 8,
+                                        border: '2px solid #e9d6a8',
+                                        background: '#fff',
+                                        fontSize: 12,
+                                        color: '#725d42',
+                                        cursor: 'pointer',
+                                        whiteSpace: 'nowrap',
+                                    }}
+                                >
+                                    恢复默认
+                                </button>
+                            )}
+                        </div>
+                    </Field>
 
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
                         <Field label="新娘">
@@ -255,6 +314,12 @@ const WEDDING_API: ApiRow[] = [
     { prop: 'lotteryNumber', desc: '抽奖号码', type: 'string', defaultVal: '0001' },
     { prop: 'lotteryLabel', desc: '抽奖区标题', type: 'ReactNode', defaultVal: 'LUCKY NUMBER' },
     { prop: 'lotteryHint', desc: '抽奖区底部说明', type: 'ReactNode', defaultVal: '凭此号码参与现场抽奖…' },
+    {
+        prop: 'brideAndGroomImage',
+        desc: '新郎新娘合照图片（不传则使用内置默认图）',
+        type: 'string',
+        defaultVal: '-',
+    },
     { prop: 'className', desc: '自定义类名', type: 'string', defaultVal: '-' },
     { prop: 'style', desc: '自定义样式', type: 'CSSProperties', defaultVal: '-' },
 ];
