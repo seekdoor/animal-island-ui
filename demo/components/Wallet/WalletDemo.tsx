@@ -26,7 +26,7 @@ const WALLET_API: ApiRow[] = [
     },
     {
         prop: 'icon',
-        desc: '自定义货币图标，默认是动森风格钱袋',
+        desc: '自定义货币图标，默认是动物主题钱袋',
         type: 'ReactNode',
         defaultVal: '-',
     },
@@ -56,7 +56,7 @@ const WalletDemo: React.FC = () => {
                 Wallet <span style={tagStyle}>钱包</span>
             </div>
             <div style={labelStyle}>
-                Wallet 钱包组件 — 动森风格的金币展示，奶油描边的橄榄黄胶囊配上凸的钱袋图标，悬停时钱袋轻晃。
+                Wallet 钱包组件 — 动物主题的金币展示，奶油描边的橄榄黄胶囊配上凸的钱袋图标，悬停时钱袋轻晃。
             </div>
 
             <div style={labelStyle}>基础用法（占位文案 00,000）</div>

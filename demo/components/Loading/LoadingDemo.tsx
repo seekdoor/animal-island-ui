@@ -20,7 +20,7 @@ const LoadingDemo: React.FC = () => {
                 Loading <span style={tagStyle}>加载动画</span>
             </div>
             <div style={labelStyle}>
-                动森风格小岛 Loading
+                动物主题小岛 Loading
                 动画组件，带有漂浮的小岛、摇曳的树叶和游动的鱼。关闭时会从中间圆形透明扩散，露出底层内容。
             </div>
             <div style={{ marginBottom: 16 }}>
